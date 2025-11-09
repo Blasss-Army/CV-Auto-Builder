@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Credenciales y tokens
+credentials.json
+token.json
+
+# Datos locales/exportaciones
+exports/
+*.xlsx
+*.xls
+*.csv
+
+# Cachés
+.cache/
+*.log
+
+# Gradio
+gradio_cached_examples/
