@@ -28,3 +28,28 @@ exports/
 
 # Gradio
 gradio_cached_examples/
+
+/JoinProfile/
+
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.log
+
+# Playwright / perfiles / estado
+JoinProfile/
+screens/
+google_state.json
+*.state.json
+
+# Entornos/secrets
+.env
+*.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
