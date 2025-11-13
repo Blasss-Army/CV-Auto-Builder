@@ -17,7 +17,7 @@ def build_linkedin_jobs_url(
     experience: list[str] | None = None,
     posted: str | None = None,
     easy_apply: bool = False,          # << nuevo
-    actively_hiring: bool = True,     # << opcional
+    actively_hiring: bool = False,     # << opcional
     sort_newest: bool = True           # << opcional
 ) -> str:
     
@@ -41,9 +41,9 @@ def build_linkedin_jobs_url(
         params["f_TPR"] = POSTED[posted]
 
      # --- filtros no oficiales ---
-    if easy_apply:
-        params["f_EA"] = "true"        # Empresas con “Actively Hiring”.
     if actively_hiring:
+        params["f_EA"] = "true"        # Empresas con “Actively Hiring”.
+    if easy_apply:
         params["f_AL"] = "true"        # Solo Easy Apply (no documentado). 
     if sort_newest:
         params["sortBy"] = "DD"        # Newest first.
