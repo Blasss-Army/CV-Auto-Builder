@@ -188,6 +188,7 @@ def logging_with_google(url: str = DEFAULT_JOIN_URL):
             return msg, updated_page
     
 
+
     except PwTimeout:
         return "⏱️ Timeout durante el login con Google.", url
     except Exception as e:
