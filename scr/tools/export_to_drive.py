@@ -11,7 +11,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # Usa la MISMA ruta que Excel exporta:
-from app.exports_tools.excel_export_local import EXCEL_PATH as LOCAL_XLSX
+from tools.excel_export_local import EXCEL_PATH as LOCAL_XLSX
 
 # Importante: borra token.json al cambiar este scope
 SCOPES = ["https://www.googleapis.com/auth/drive"]

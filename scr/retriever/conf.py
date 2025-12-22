@@ -7,7 +7,7 @@ from qdrant_client.models import Distance
 # conf.py is located at .../create_retriever/conf.py
 # parents[0] = .../create_retriever
 # parents[1] = .../  (project root)
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 @dataclass

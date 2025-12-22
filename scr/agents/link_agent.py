@@ -9,9 +9,9 @@ from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from functools import partial
 from pydantic import Field, BaseModel
-from app.exports_tools.excel_export_local import export_to_excel, date_madrid_str
-from app.exports_tools.export_to_drive import run_upload_to_drive, run_download_from_drive, LOCAL_XLSX
-from app.prompt.prompt_v2 import build_user_prompt, SYSTEM_RESUME 
+from tools.excel_export_local import export_to_excel, date_madrid_str
+from tools.export_to_drive import run_upload_to_drive, run_download_from_drive, LOCAL_XLSX
+from prompts.prompt_v2 import build_user_prompt, SYSTEM_RESUME 
 
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")

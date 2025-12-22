@@ -2,8 +2,7 @@
 
 import gradio as gr
 from orchestrator.orchestrator import Orchestrator
-from app.linkedin_search import build_linkedin_jobs_url
-from app.web_apply.simple_web_apply import open_and_screenshot 
+from ingestion.linkedin_search import build_linkedin_jobs_url
 
 def run_gradio(orchestrator: Orchestrator):
 
@@ -57,13 +56,6 @@ def run_gradio(orchestrator: Orchestrator):
         return f"[Abrir búsqueda en LinkedIn]({url})\n\n> Se abrirá en tu navegador."
     
 
-    def demo_playwright(url: str):
-        """
-        Wrapper pequeñito para usar open_and_screenshot desde Gradio.
-        """
-        text, path = open_and_screenshot(url)
-        return text, path
-    
         
     with gr.Blocks(title="LangGraph CV Auto-Builder (Demo mínima)") as demo:
         gr.Markdown("# LangGraph CV Auto-Builder — Demo mínima\n\nEste es el esqueleto. A continuación añadiremos RAG y agentes.")
@@ -73,8 +65,8 @@ def run_gradio(orchestrator: Orchestrator):
 
         with gr.Tab("Get LinkedIn URL"):
             gr.Markdown("## 1) Genera una búsqueda en LinkedIn (se abre en tu navegador)")
-            kw = gr.Textbox(label="Palabras clave", placeholder="Generative AI, LLM, RAG")
-            loc = gr.Textbox(label="Ubicación", placeholder="Switzerland, Zurich")
+            kw = gr.Textbox(label="Palabras clave",  value="Machine Learning", placeholder="Generative AI, LLM, RAG")
+            loc = gr.Textbox(label="Ubicación", value="Switzerland", placeholder="Switzerland, Zurich")
             wt  = gr.CheckboxGroup(choices=["remote", "hybrid", "on-site"], label="Modalidad")
             ex  = gr.CheckboxGroup(choices=["internship","entry","associate","mid-senior","director", "executive"], label="Seniority")
             po  = gr.Radio(choices=["24h","week","month"], value="week", label="Antigüedad")
@@ -96,39 +88,6 @@ def run_gradio(orchestrator: Orchestrator):
 
             boton_generate_cv.click(fn = run_graph,inputs = [job_text,lang],outputs = salida_generate_cv )
             boton_clear.click(fn=lambda: ("",""), inputs=[], outputs=[job_text, salida_generate_cv])
-
-
-        with gr.Tab("Playwright demo"):
-            gr.Markdown("## Probar Playwright con una URL sencilla")
-
-            url_demo = gr.Textbox(
-                label="URL",
-                placeholder="https://example.com"
-            )
-
-            btn_demo = gr.Button("Abrir con Playwright y hacer captura")
-
-            msg_out = gr.Markdown(label="Resultado")
-            img_out = gr.Image(label="Screenshot de la página")
-
-            btn_demo.click(
-                fn=demo_playwright,
-                inputs=[url_demo],
-                outputs=[msg_out, img_out],
-            )
-            
-        with gr.Tab("Browser Graph"):
-            gr.Markdown("## Probar Nuevo Grafo")
-            btn_graph_demo = gr.Button("Ejecutar grafo")
-            graph_last_md = gr.Markdown(label="Último paso")
-            output_json = gr.JSON(label="Estado completo")
-    
-
-            btn_graph_demo.click(
-                fn=run_browser_agent,
-                inputs=[],
-                outputs=[graph_last_md,output_json],
-            )
 
         with gr.Tab("LangGraph CV Auto-Builder"):
             gr.Markdown("# LangGraph CV Auto-Builder")

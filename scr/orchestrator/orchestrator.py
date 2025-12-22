@@ -1,8 +1,8 @@
-from app.agents.react_agent import build_graph
-from app.agents.browser_agent import build_browser_graph
+from agents.link_agent import build_graph
+from agents.react_agent import build_browser_graph
 from retriever.retriever import Retriever
 from retriever.conf import RetrieverConfig
-from app.web_apply.google_session import  bootstrap_google_session ,check_google_session
+from web_apply.google_session import  bootstrap_google_session ,check_google_session
 
 
 

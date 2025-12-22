@@ -8,7 +8,7 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
-EXPORT_DIR = Path(__file__).resolve().parents[1] / "exports"
+EXPORT_DIR = Path(__file__).resolve().parents[2] / "exports"
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 COLUMNS = ["Fecha","Pais","Campo","Pagina Web","Nivel","Remoto?","Empresa","Link","Salario","Aceptado?"]

@@ -5,5 +5,6 @@ from retriever.conf import RetrieverConfig
 # from app.react_agent import build_graph
 
 
-o = Orchestrator() 
-run_gradio(o)
+if __name__ == "__main__":
+    o = Orchestrator() 
+    run_gradio(o)
